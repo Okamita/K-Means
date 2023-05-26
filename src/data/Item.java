@@ -1,30 +1,30 @@
 package data;
-import utility.ArraySet;
+import java.util.*;
 
 public abstract class Item {
-    private Attribute attribute;
-    private Object value;
+    Attribute attribute;
+    Object value;
 
-    Item(Attribute attribute, Object value){
+    Item(Attribute attribute, Object value) {
         this.attribute = attribute;
         this.value = value;
     }
 
-    Attribute getAttribute(){
+    Attribute getAttribute() {
         return attribute;
     }
 
-    Object getValue(){
+    Object getValue() {
         return value;
     }
 
-    public String toString(){
-        return value.toString();
+    public String toString() {
+        return this.value + " ";
     }
 
     abstract double distance(Object a);
 
-    public void update(Data data, ArraySet clusteredData){
+    public void update(Data data, Set<Integer>  clusteredData) {
         value = data.computePrototype(clusteredData, attribute);
     }
 }

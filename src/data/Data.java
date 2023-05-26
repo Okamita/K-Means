@@ -1,107 +1,163 @@
 package data;
-import java.util.Random;
+
+import java.util.*;
+
 import utility.ArraySet;
 
-public class Data
-{
-    private Object data[][];
+public class Data {
+    // Le visibilità di classi , attributi e metodi devono essere decise dagli studenti	
+    List<Example> data;
     private int numberOfExamples;
-    private Attribute attributeSet[] ;
+    List<Attribute> attributeSet=new LinkedList<Attribute>();
 
-    public Data(){
+    public Data() {
 
-        numberOfExamples = 14;
+        //data
 
-        attributeSet = new Attribute[5];
+        TreeSet<Example> tempData = new TreeSet<Example>();
+        Example ex0 = new Example();
+        Example ex1 = new Example();
+        Example ex2 = new Example();
+        Example ex3 = new Example();
+        Example ex4 = new Example();
+        Example ex5 = new Example();
+        Example ex6 = new Example();
+        Example ex7 = new Example();
+        Example ex8 = new Example();
+        Example ex9 = new Example();
+        Example ex10 = new Example();
+        Example ex11 = new Example();
+        Example ex12 = new Example();
+        Example ex13 = new Example();
 
-        String outLookValues[] = { "overcast", "rain", "sunny" };
-        String temperatureValues[] = { "hot", "mild", "cool" };
-        String humidityValues[] = { "high", "normal" };
-        String windValues[] = { "weak", "strong" };
-        String playTennisValues[] = { "yes", "no" };
+        //PRIMI ATTRIBUTI
+        ex0.add("sunny");
+        ex1.add("sunny");
+        ex2.add("overcast");
+        ex3.add("rain");
+        ex4.add("rain");
+        ex5.add("rain");
+        ex6.add("overcast");
+        ex7.add("sunny");
+        ex8.add("sunny");
+        ex9.add("rain");
+        ex10.add("sunny");
+        ex11.add("overcast");
+        ex12.add("overcast");
+        ex13.add("rain");
 
-        attributeSet[0] = new DiscreteAttribute("Outlook", 0, outLookValues);
-        attributeSet[1] = new DiscreteAttribute("Temperature", 1, temperatureValues);
-        attributeSet[2] = new DiscreteAttribute("Humidity", 2, humidityValues);
-        attributeSet[3] = new DiscreteAttribute("Wind", 3, windValues);
-        attributeSet[4] = new DiscreteAttribute("PlayTennis", 4, playTennisValues);
+        //SECONDI ATTRIBUTI
+        ex0.add("hot");
+        ex1.add("hot");
+        ex2.add("hot");
+        ex3.add("mild");
+        ex4.add("cool");
+        ex5.add("cool");
+        ex6.add("cool");
+        ex7.add("mild");
+        ex8.add("cool");
+        ex9.add("mild");
+        ex10.add("mild");
+        ex11.add("mild");
+        ex12.add("hot");
+        ex13.add("mild");
 
-        data = new Object [14][5];
+        //TERZI ATTRIBUTI
+        ex0.add("high");
+        ex1.add("high");
+        ex2.add("high");
+        ex3.add("high");
+        ex4.add("normal");
+        ex5.add("normal");
+        ex6.add("normal");
+        ex7.add("high");
+        ex8.add("normal");
+        ex9.add("normal");
+        ex10.add("normal");
+        ex11.add("high");
+        ex12.add("normal");
+        ex13.add("high");
 
-		data[0][0] = "sunny";
-        data[1][0] = "sunny";
-        data[2][0] = "overcast";
-        data[3][0] = "rain";
-        data[4][0] = "rain";
-        data[5][0] = "rain";
-        data[6][0] = "overcast";
-        data[7][0] = "sunny";
-        data[8][0] = "sunny";
-        data[9][0] = "rain";
-        data[10][0] = "sunny";
-        data[11][0] = "overcast";
-        data[12][0] = "overcast";
-        data[13][0] = "rain";
+        //QUARTI ATTRIBUTI
+        ex0.add("weak");
+        ex1.add("strong");
+        ex2.add("weak");
+        ex3.add("weak");
+        ex4.add("weak");
+        ex5.add("strong");
+        ex6.add("strong");
+        ex7.add("weak");
+        ex8.add("weak");
+        ex9.add("weak");
+        ex10.add("strong");
+        ex11.add("strong");
+        ex12.add("weak");
+        ex13.add("strong");
 
-        data[0][1] = "hot";
-        data[1][1] = "hot";
-        data[2][1] = "hot";
-        data[3][1] = "mild";
-        data[4][1] = "cool";
-        data[5][1] = "cool";
-        data[6][1] = "cool";
-        data[7][1] = "mild";
-        data[8][1] = "cool";
-        data[9][1] = "mild";
-        data[10][1] = "mild";
-        data[11][1] = "mild";
-        data[12][1] = "hot";
-        data[13][1] = "mild";
+        //QUINTI ATTRIBUTI
+        ex0.add("no");
+        ex1.add("no");
+        ex2.add("yes");
+        ex3.add("yes");
+        ex4.add("yes");
+        ex5.add("no");
+        ex6.add("yes");
+        ex7.add("no");
+        ex8.add("yes");
+        ex9.add("yes");
+        ex10.add("yes");
+        ex11.add("yes");
+        ex12.add("yes");
+        ex13.add("no");
 
-        data[0][2] = "high";
-        data[1][2] = "high";
-        data[2][2] = "high";
-        data[3][2] = "high";
-        data[4][2] = "normal";
-        data[5][2] = "normal";
-        data[6][2] = "normal";
-        data[7][2] = "high";
-        data[8][2] = "normal";
-        data[9][2] = "normal";
-        data[10][2] = "normal";
-        data[11][2] = "high";
-        data[12][2] = "normal";
-        data[13][2] = "high";
+        tempData.add(ex0);
+        tempData.add(ex1);
+        tempData.add(ex2);
+        tempData.add(ex3);
+        tempData.add(ex4);
+        tempData.add(ex5);
+        tempData.add(ex6);
+        tempData.add(ex7);
+        tempData.add(ex8);
+        tempData.add(ex9);
+        tempData.add(ex10);
+        tempData.add(ex11);
+        tempData.add(ex12);
+        tempData.add(ex13);
 
-        data[0][3] = "weak";
-        data[1][3] = "strong";
-        data[2][3] = "weak";
-        data[3][3] = "weak";
-        data[4][3] = "weak";
-        data[5][3] = "strong";
-        data[6][3] = "strong";
-        data[7][3] = "weak";
-        data[8][3] = "weak";
-        data[9][3] = "weak";
-        data[10][3] = "strong";
-        data[11][3] = "strong";
-        data[12][3] = "weak";
-        data[13][3] = "strong";
+        data = new ArrayList<Example>(tempData);
+        System.out.println(data.size());
+        numberOfExamples = data.size();
 
-        data[0][4] = "no";
-        data[1][4] = "no";
-        data[2][4] = "yes";
-        data[3][4] = "yes";
-        data[4][4] = "yes";
-        data[5][4] = "no";
-        data[6][4] = "yes";
-        data[7][4] = "no";
-        data[8][4] = "yes";
-        data[9][4] = "yes";
-        data[10][4] = "yes";
-        data[11][4] = "yes";
-        data[12][4] = "yes";
-        data[13][4] = "no";
+
+        String[] outLookValues = new String[3];
+        outLookValues[0] = "overcast";
+        outLookValues[1] = "rain";
+        outLookValues[2] = "sunny";
+
+        String[] temperatureValues = new String[3];
+        temperatureValues[0] = "hot";
+        temperatureValues[1] = "mild";
+        temperatureValues[2] = "cold";
+
+        String[] humidityValues = new String[2];
+        humidityValues[0] = "high";
+        humidityValues[1] = "normal";
+
+        String[] windValues = new String[2];
+        windValues[0] = "weak";
+        windValues[1] = "strong";
+
+        String[] playTennisValues = new String[2];
+        playTennisValues[0] = "yes";
+        playTennisValues[1] = "no";
+
+        attributeSet.add(new DiscreteAttribute("Outlook", 0, outLookValues));
+        attributeSet.add(new DiscreteAttribute("Temperature", 1, temperatureValues));
+        attributeSet.add(new DiscreteAttribute("Humidity", 2, humidityValues));
+        attributeSet.add(new DiscreteAttribute("Wind", 3, windValues));
+        attributeSet.add(new DiscreteAttribute("PlayTennis", 4, playTennisValues));
+
     }
 
     public int getNumberOfExamples() {
@@ -109,51 +165,28 @@ public class Data
     }
 
     public int getNumberOfAttributes() {
-        return attributeSet.length;
+        return attributeSet.size();
     }
 
-    Attribute getAttribute(int index) {
-        return attributeSet[index];
+    /*Attribute[] getAttributeSchema(){return attributeSet;}*/
+
+    public Object getAttributeValue(int exampleIndex, int attributeIndex) {
+        return data.get(exampleIndex).get(attributeIndex);
     }
 
-    public Object getAttributeValue( int exampleIndex,  int attributeIndex) {
-        return data[exampleIndex][attributeIndex];
+    public Tuple getItemSet(int index) {
+        Tuple tuple = new Tuple(attributeSet.size());
+        for (Attribute at : attributeSet)
+            tuple.add(new DiscreteItem((DiscreteAttribute) at, (String) data.get(index).get(at.getIndex())), at.getIndex());
+        return tuple;
     }
 
-    public String toString() {
-
-		StringBuilder stringBuilded = new StringBuilder();
-
-		for(int i = 0; i < getNumberOfAttributes(); i++)
-		{
-			stringBuilded.append(attributeSet[i] + ", ");
-		}
-
-		stringBuilded.append("\n");
-
-		for(int x = 0; x < numberOfExamples; x++){
-
-			stringBuilded.append(x + ": ");
-			for(int y = 0; y < getNumberOfAttributes(); y++){
-	
-				stringBuilded.append(data[x][y]  + ",");
-			}
-			stringBuilded.append("\n");
-		}
-
-		return stringBuilded.toString();
-	}
-
-	public Tuple getItemSet(int index){
-			Tuple tuple = new Tuple(getNumberOfAttributes());
-			for(int i = 0; i < getNumberOfAttributes(); i++){
-				tuple.add(new DiscreteItem((DiscreteAttribute) attributeSet[i],(String) data[index][i]),i);
-			}
-			return tuple;
-	}
-
-	public int[] sampling(int k) {
-        int[] centroidIndexes = new int[k]; //choose k random different centroids in data.
+    public int[] sampling(int k) throws OutOfRangeSampleSize {
+        if (k <= 0 || k > data.size()) {
+            throw new OutOfRangeSampleSize("Devi inserire un numero intero compreso tra 1 e " + data.size());
+        }
+        int[] centroidIndexes = new int[k];
+        //choose k random different centroids in data.
         Random rand = new Random();
         rand.setSeed(System.currentTimeMillis());
         for (int i = 0; i < k; i++) {
@@ -161,44 +194,118 @@ public class Data
             int c;
             do {
                 found = false;
-                c = rand.nextInt(getNumberOfExamples()); // verify that centroid[c] is not equal to a centroide already stored in CentroidIndexes
+                c = rand.nextInt(getNumberOfExamples());
                 for (int j = 0; j < i; j++)
                     if (compare(centroidIndexes[j], c)) {
                         found = true;
                         break;
                     }
-            }
-            while (found);
+            } while (found);
             centroidIndexes[i] = c;
         }
         return centroidIndexes;
     }
 
-	private boolean compare(int i, int j){
-		for(int x = 0; x < getNumberOfAttributes(); x++){
-			if(data[i][x] != data[j][x]){
-				return false;
-			}
-		}
+    private boolean compare(int i, int j) {
+        for (Attribute at : attributeSet) {
+            if (!data.get(i).get(at.getIndex()).equals(data.get(j).get(at.getIndex())))
+                return false;
+        }
+        return true;
+    }
 
-		return true;
-	}
+    Object computePrototype(Set<Integer> idList, Attribute attribute) {
+        return computePrototype(idList, (DiscreteAttribute) attribute);
+    }
 
-	Object computePrototype(ArraySet idList, Attribute attribute){
-		return computePrototype(idList, (DiscreteAttribute) attribute);
-	}
-
-	//Copiata 1
-    String computePrototype(ArraySet idList, DiscreteAttribute attribute) {
-        int max = attribute.frequency(this, idList, attribute.getValue(0)), tmp;
-        String prototype = attribute.getValue(0);
-        for (int i = 1; i < attribute.getNumberOfDistinctValues(); i++) {
-            tmp = attribute.frequency(this, idList, attribute.getValue(i));
-            if (tmp > max) {
-                max = tmp;
-                prototype = attribute.getValue(i);
+    private String computePrototype(Set<Integer> idList, DiscreteAttribute attribute)
+    {
+        Iterator<String> it=attribute.iterator();
+        String first=it.next();
+        int max=attribute.frequency(this,idList,first);
+        int tmp;
+        String prototype=first;
+        String stringTemp;
+        while(it.hasNext())
+        {
+            stringTemp=it.next();
+            tmp=attribute.frequency(this,idList,stringTemp);
+            if (tmp>max)
+            {
+                max=tmp;
+                prototype=stringTemp;
             }
         }
         return prototype;
     }
+
+    private int countDistinctTuples() {
+        int count = 0;
+        for (int i = 0; i < numberOfExamples; i++) {
+            boolean found = false;
+            for (int j = 0; j < i; j++)
+                if (compare(i, j)) {
+                    found = true;
+                    break;
+                }
+            if (!found)
+                count++;
+        }
+        return count;
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        int i=0;
+        for (Attribute at:attributeSet) {
+            s.append(at.getName()).append(i == attributeSet.size() - 1 ? "\n" : ",");
+            i++;
+        }
+        i=0;
+        for (Example ex:data)
+        {
+            s.append(i).append(":").append(ex.toString()).append("\n");
+            i++;
+        }
+
+        return s.toString();
+    }
+
+    static class Example implements Comparable<Example> {
+        private final List<Object> example = new ArrayList<Object>();
+
+        private void add(Object o) {
+            example.add(o);
+        }
+
+        private Object get(int i) {
+            return example.get(i);
+        }
+
+        public int compareTo(Example ex) {
+            int result = 0;
+            Iterator<Object> questo = this.example.iterator();
+            Iterator<Object> parametro = ex.example.iterator();
+            while (questo.hasNext() && parametro.hasNext()) {
+                Object o1 = questo.next();
+                Object o2 = parametro.next();
+                if (!o1.equals(o2)) {
+                    result = ((Comparable) o1).compareTo(o2);
+                    break;
+                }
+            }
+            return result;
+        }
+
+        public String toString()
+        {
+            StringBuilder s= new StringBuilder();
+            for (Object o:example)
+                s.append(o).append(",");
+            return s.toString();
+        }
+    }
 }
+
+
+    

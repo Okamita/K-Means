@@ -1,16 +1,16 @@
 package data;
+
 class ContinuousAttribute extends Attribute{
+    private final double max;
+    private final double min;
 
-    private double max;
-    private double min;
-
-    ContinuousAttribute(String name, int index, double min, double max){
+    ContinuousAttribute(String name, int index, double max, double min) {
         super(name, index);
-        this.min = min;
         this.max = max;
+        this.min = min;
     }
-
+    
     double getScaledValue(double v){
-        return (v - min) / (max - min);
+        return (v - min) / max - min;
     }
 }

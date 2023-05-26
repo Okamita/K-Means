@@ -1,16 +1,24 @@
 package mining;
+
+import java.util.*;
 import utility.ArraySet;
 import data.Data;
 import data.Tuple;
 
+import java.util.Objects;
 
-class Cluster {
-	private Tuple centroid;
-	private ArraySet clusteredData; 
-	
+public class Cluster {
+	private final Tuple centroid;
+	private final Set<Integer> clusteredData;
+
+	Cluster(){
+		centroid=null;
+		clusteredData=new HashSet<Integer>();
+	}
+
 	Cluster(Tuple centroid){
-		this.centroid = centroid;
-		clusteredData = new ArraySet();
+		this.centroid=centroid;
+		clusteredData=new HashSet<Integer>();
 		
 	}
 		
@@ -19,59 +27,46 @@ class Cluster {
 	}
 	
 	void computeCentroid(Data data){
-		for(int i=0; i < centroid.getLength(); i++){
-			centroid.get(i).update(data, clusteredData);
+		for(int i = 0; i< Objects.requireNonNull(centroid).getLength(); i++){
+			centroid.get(i).update(data,clusteredData);
 		}
-		
 	}
 	//return true if the tuple is changing cluster
 	boolean addData(int id){
 		return clusteredData.add(id);
-		
 	}
 	
-	//verifica se una transazione clusterizzata nell'array corrente
+	//verifica se una transazione e' clusterizzata nell'array corrente
 	boolean contain(int id){
-		return clusteredData.get(id);
+		return clusteredData.contains(id);
 	}
 	
-
 	//remove the tuplethat has changed the cluster
 	void removeTuple(int id){
-		clusteredData.delete(id);
-		
+		clusteredData.remove(id);
 	}
 	
 	public String toString(){
-		String str = "Centroid = (";
-		for(int i = 0; i < centroid.getLength(); i++)
-			str += centroid.get(i);
-		str += ")";
-		return str;	
+		StringBuilder str= new StringBuilder("Centroid=(");
+		for(int i = 0; i< Objects.requireNonNull(centroid).getLength(); i++)
+			str.append(centroid.get(i));
+		str.append(")");
+		return str.toString();
 	}
-	
-    public String toString(Data data) {
-        String str = "Centroid = ( ";
 
-        for (int i = 0; i < centroid.getLength(); i++) {
-            str += centroid.get(i) + (i == centroid.getLength() - 1 ? "" : " ");
-        }
-
-        str += ")\nExamples:\n";
-
-        int[] array = clusteredData.toArray();
-
-        for (int i = 0; i < array.length; i++) {
-            str += "[";
-
-            for (int j = 0; j < data.getNumberOfAttributes(); j++)
-
-                str += data.getAttributeValue(array[i], j) + (j == data.getNumberOfAttributes() - 1 ? "" : " ");
-            str += "] Dist = " + getCentroid().getDistance(data.getItemSet(array[i])) + "\n";
-        }
-
-        str += "AvgDistance = " + getCentroid().avgDistance(data, array) + "\n";
-        return str;
-    }
-
+	public String toString(Data data){
+		StringBuilder str= new StringBuilder("Centroid=(");
+		for(int i = 0; i< Objects.requireNonNull(centroid).getLength(); i++)
+			str.append(centroid.get(i)).append(" ");
+		str.append(")\nExamples:\n");
+		for (int i:clusteredData)
+		{
+			str.append("[");
+			for(int j=0;j<data.getNumberOfAttributes();j++)
+				str.append(data.getAttributeValue(i, j)).append(" ");
+			str.append("] dist=").append(getCentroid().getDistance(data.getItemSet(i))).append("\n");
+		}
+		str.append("AvgDistance=").append(getCentroid().avgDistance(data, clusteredData)).append("\n");
+		return str.toString();
+	}
 }
